@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://2ra5jc6iex42"]
+[gd_scene load_steps=14 format=3 uid="uid://2ra5jc6iex42"]
 
+[ext_resource type="Texture2D" uid="uid://bfvqnm2kkjexf" path="res://assets/addons/kenney_particle_pack/circle_04.png" id="1_3mcev"]
 [ext_resource type="PackedScene" uid="uid://5umcx7eqlgfn" path="res://scenes/player.tscn" id="1_gemp0"]
+[ext_resource type="Texture2D" uid="uid://b5qe37uqxpmjo" path="res://assets/addons/kenney_particle_pack/fire_02.png" id="3_3jqut"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vanro"]
 size = Vector3(1000, 0.1, 40)
@@ -11,11 +13,38 @@ size = Vector3(1000, 0.1, 1000)
 [sub_resource type="BoxMesh" id="BoxMesh_hipgp"]
 size = Vector3(1000, 0.1, 1000)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx446"]
+albedo_texture = ExtResource("1_3mcev")
+
 [sub_resource type="BoxMesh" id="BoxMesh_17it1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oncuu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kmna0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cg7sw"]
+lifetime_randomness = 0.24
+inherit_velocity_ratio = 0.341
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+color = Color(0.156332, 0.285656, 0.347546, 1)
+turbulence_influence_max = 0.248
+turbulence_initial_displacement_min = 2.0
+turbulence_initial_displacement_max = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7au4m"]
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_3jqut")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_kqt6y"]
+material = SubResource("StandardMaterial3D_7au4m")
 
 [node name="Level" type="Node3D"]
 
@@ -80,6 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.216215, 0)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Floor"]
+material_override = SubResource("StandardMaterial3D_hx446")
 mesh = SubResource("BoxMesh_hipgp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Floor"]
@@ -108,3 +138,21 @@ omni_range = 21.98
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_gemp0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.376084, -0.144124, 4.60989)
+
+[node name="orb" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="orb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17823, 1.20589, 1.59532)
+cast_shadow = 0
+amount = 4
+lifetime = 4.0
+fixed_fps = 25
+process_material = SubResource("ParticleProcessMaterial_cg7sw")
+draw_pass_1 = SubResource("QuadMesh_kqt6y")
+
+[node name="smoke" type="Node3D" parent="."]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="smoke"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66565, 1.14886, -1.09397)
+emission_shape = 1
+emission_sphere_radius = 13.41
