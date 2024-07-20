@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dej0l0qx7slc0"]
+
+[ext_resource type="Script" path="res://fire_light.gd" id="1_qeoi6"]
+
+[sub_resource type="Gradient" id="Gradient_xondd"]
+offsets = PackedFloat32Array(0.249135, 0.702422)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bqtr6"]
+noise_type = 0
+seed = 5
+frequency = 0.2323
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_txxa0"]
+color_ramp = SubResource("Gradient_xondd")
+noise = SubResource("FastNoiseLite_bqtr6")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1s8ti"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.968627, 0.556863, 0, 1)
+script = ExtResource("1_qeoi6")
+noise = SubResource("NoiseTexture3D_txxa0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.88, 0, 0, 0, -4.37114e-08, -2.16, 0, 1, -9.44166e-08, 0, 0, -1)
+mesh = SubResource("PlaneMesh_1s8ti")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
