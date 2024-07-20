@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://2ra5jc6iex42"]
+[gd_scene load_steps=15 format=3 uid="uid://2ra5jc6iex42"]
 
 [ext_resource type="Texture2D" uid="uid://bfvqnm2kkjexf" path="res://assets/addons/kenney_particle_pack/circle_04.png" id="1_3mcev"]
 [ext_resource type="PackedScene" uid="uid://5umcx7eqlgfn" path="res://scenes/player.tscn" id="1_gemp0"]
 [ext_resource type="Texture2D" uid="uid://b5qe37uqxpmjo" path="res://assets/addons/kenney_particle_pack/fire_02.png" id="3_3jqut"]
+[ext_resource type="PackedScene" uid="uid://dej0l0qx7slc0" path="res://scenes/fire_light_scene.tscn" id="4_377ce"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vanro"]
 size = Vector3(1000, 0.1, 40)
@@ -150,9 +151,5 @@ fixed_fps = 25
 process_material = SubResource("ParticleProcessMaterial_cg7sw")
 draw_pass_1 = SubResource("QuadMesh_kqt6y")
 
-[node name="smoke" type="Node3D" parent="."]
-
-[node name="CPUParticles3D" type="CPUParticles3D" parent="smoke"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66565, 1.14886, -1.09397)
-emission_shape = 1
-emission_sphere_radius = 13.41
+[node name="Node3D" parent="." instance=ExtResource("4_377ce")]
+transform = Transform3D(1.06499, 0, 0, 0, 1.06499, 0, 0, 0, 1.06499, 8.1883, 5.76403, -2.69757)
