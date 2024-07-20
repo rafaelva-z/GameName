@@ -1,8 +1,8 @@
 [gd_scene load_steps=25 format=3 uid="uid://2ra5jc6iex42"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_q8qw5"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_q8qw5"]
 [ext_resource type="PackedScene" uid="uid://uwjofkm4iyb2" path="res://addons/rigid_character_body_3d-cb734c0556d1d491fa6033bf931e106259b6c1f4/example/rigid_player.tscn" id="2_36h15"]
-[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="3_0wgi1"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_0wgi1"]
 [ext_resource type="PackedScene" uid="uid://byew263bu58d5" path="res://scenes/pause_menu.tscn" id="3_7hy1w"]
 [ext_resource type="Texture2D" uid="uid://djb3smu88y2hb" path="res://assets/circle_01.png" id="5_shoni"]
 
