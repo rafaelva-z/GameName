@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://x85i7fb5l3ox"]
+
+[ext_resource type="Texture2D" uid="uid://dmtjfv4jch6qp" path="res://assets/Flare00.PNG" id="1_6swhd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ft6ac"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.766)
+albedo_texture = ExtResource("1_6swhd")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_6njn5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.413662, 0.324784), -1.50415, -1.50415, 0, 0, Vector2(1, 0.0142674), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2h7ty"]
+curve = SubResource("Curve_6njn5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e35yn"]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 0.4
+spread = 180.0
+initial_velocity_min = 0.5
+initial_velocity_max = 2.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+scale_min = 1.5
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_2h7ty")
+
+[sub_resource type="QuadMesh" id="QuadMesh_eonc8"]
+
+[node name="dissolve" type="Node3D"]
+
+[node name="smoke2" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ft6ac")
+amount = 7
+lifetime = 1.51
+explosiveness = 0.24
+randomness = 0.7
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_e35yn")
+draw_pass_1 = SubResource("QuadMesh_eonc8")
