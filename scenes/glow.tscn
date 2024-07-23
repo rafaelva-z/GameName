@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://co2v151wjkfs1"]
+[gd_scene load_steps=10 format=3 uid="uid://co2v151wjkfs1"]
 
 [ext_resource type="Texture2D" uid="uid://cehgl6sx8np8t" path="res://assets/Flare00.PNG" id="1_2tbqs"]
 
@@ -9,6 +9,13 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.991314, 0.79099, 0.499839, 1)
 albedo_texture = ExtResource("1_2tbqs")
+
+[sub_resource type="Curve" id="Curve_qpp5h"]
+_data = [Vector2(0.00189754, 0.274768), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n0mb7"]
+curve = SubResource("Curve_qpp5h")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nu0bc"]
 emission_shape_scale = Vector3(1, 1.21, 1)
@@ -23,6 +30,9 @@ radial_velocity_max = -12.43
 gravity = Vector3(2.08165e-12, 0.5, 2.08165e-12)
 tangential_accel_min = -26.77
 tangential_accel_max = 25.0
+scale_min = 0.2
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_n0mb7")
 
 [sub_resource type="QuadMesh" id="QuadMesh_wdhwt"]
 
@@ -59,6 +69,26 @@ process_material = SubResource("ParticleProcessMaterial_nu0bc")
 draw_pass_1 = SubResource("QuadMesh_wdhwt")
 
 [node name="flash" type="GPUParticles3D" parent="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_kee8i")
+amount = 1
+lifetime = 0.1
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_hh1c3")
+draw_pass_1 = SubResource("QuadMesh_5n6qv")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.0124962, 0, -0.999922, 0, 1, 0, 0.999922, 0, 0.0124962, 0.0312599, 0.415838, 0.0510111)
+material_override = SubResource("StandardMaterial3D_ir0gg")
+amount = 20
+lifetime = 1.8
+explosiveness = 1.0
+randomness = 0.72
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_nu0bc")
+draw_pass_1 = SubResource("QuadMesh_wdhwt")
+
+[node name="flash" type="GPUParticles3D" parent="GPUParticles3D2"]
 material_override = SubResource("StandardMaterial3D_kee8i")
 amount = 1
 lifetime = 0.1
