@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://boowup7dox5m1"]
+
+[resource]
+albedo_color = Color(0.40596, 0.1428, 0.51, 1)
+backlight = Color(0.130014, 0.00747086, 1, 1)
+point_size = 0.1
+proximity_fade_distance = 2777.75

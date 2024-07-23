@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://hsa2el5jdbqr"]
+
+[ext_resource type="PackedScene" path="res://scenes/floor_rock01.blend" id="1_fkq1j"]
+
+[node name="floor_rock01" instance=ExtResource("1_fkq1j")]
