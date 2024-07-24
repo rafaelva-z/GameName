@@ -3,8 +3,8 @@
 [ext_resource type="Material" uid="uid://bkd4erx12k704" path="res://scenes/materials/flash.tres" id="1_s6y4m"]
 
 [sub_resource type="Curve" id="Curve_6njn5"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.56167, 0.589452), -1.50415, -1.50415, 0, 0, Vector2(1, 0.0142674), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.352941, 0.542578), -1.43845, -1.43845, 0, 0, Vector2(0.692042, 0.154346), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_2h7ty"]
 curve = SubResource("Curve_6njn5")
@@ -15,24 +15,29 @@ emission_shape_offset = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 emission_shape = 1
 emission_sphere_radius = 25.56
 spread = 180.0
-initial_velocity_min = 0.5
-initial_velocity_max = 2.0
-gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
-scale_min = 3.0
-scale_max = 4.0
+initial_velocity_min = 0.2
+initial_velocity_max = 1.5
+gravity = Vector3(2.08165e-12, 1, 2.08165e-12)
+scale_min = 0.8
+scale_max = 1.8
 scale_curve = SubResource("CurveTexture_2h7ty")
-color = Color(1, 1, 1, 0.339)
+color = Color(1, 1, 1, 0.662745)
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.02
+anim_speed_min = 0.47
+anim_speed_max = 0.47
 
 [sub_resource type="QuadMesh" id="QuadMesh_5nxjf"]
 
-[node name="Node3D" type="Node3D"]
+[node name="scatter_air" type="Node3D"]
 
 [node name="scatter in the air" type="GPUParticles3D" parent="."]
 material_override = ExtResource("1_s6y4m")
-amount = 10
+amount = 20
 lifetime = 5.76
+speed_scale = 0.8
 explosiveness = 0.05
-randomness = 0.48
+randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_4b2cf")
 draw_pass_1 = SubResource("QuadMesh_5nxjf")

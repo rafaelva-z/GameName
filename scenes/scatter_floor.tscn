@@ -15,8 +15,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Curve" id="Curve_6njn5"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.56167, 0.589452), -1.50415, -1.50415, 0, 0, Vector2(1, 0.0142674), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.352941, 0.542578), -1.43845, -1.43845, 0, 0, Vector2(0.692042, 0.154346), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_2h7ty"]
 curve = SubResource("Curve_6njn5")
@@ -32,21 +32,23 @@ flatness = 1.0
 initial_velocity_min = 0.5
 initial_velocity_max = 2.0
 gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
-scale_min = 3.0
-scale_max = 4.0
+scale_min = 0.2
+scale_max = 0.7
 scale_curve = SubResource("CurveTexture_2h7ty")
-color = Color(1, 1, 1, 0.339)
+color = Color(1, 1, 1, 0.815686)
 
 [sub_resource type="QuadMesh" id="QuadMesh_6n2y4"]
 
-[node name="Node3D" type="Node3D"]
+[node name="scatter_horisontal" type="Node3D"]
 
 [node name="scatter in the air2" type="GPUParticles3D" parent="."]
+layers = 2
 material_override = SubResource("StandardMaterial3D_e8rd4")
-amount = 14
+amount = 30
 lifetime = 5.76
 explosiveness = 0.05
 randomness = 0.48
 fixed_fps = 60
+trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_7ujvh")
 draw_pass_1 = SubResource("QuadMesh_6n2y4")

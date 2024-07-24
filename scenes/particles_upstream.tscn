@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://beweii4w8kkpj"]
+
+[ext_resource type="Texture2D" uid="uid://dmtjfv4jch6qp" path="res://assets/Flare00.PNG" id="1_6bqsc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynxyg"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.8256, 0.94208, 0.96, 0.972549)
+albedo_texture = ExtResource("1_6bqsc")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_6njn5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.352941, 0.542578), -1.43845, -1.43845, 0, 0, Vector2(0.692042, 0.154346), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_2h7ty"]
+curve = SubResource("Curve_6njn5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8pdwh"]
+lifetime_randomness = 0.7
+emission_shape_offset = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+emission_shape = 1
+emission_sphere_radius = 0.6
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+spread = 43.158
+initial_velocity_min = 0.1
+initial_velocity_max = 0.4
+gravity = Vector3(2.08165e-12, 0.5, 2.08165e-12)
+attractor_interaction_enabled = false
+scale_min = 0.05
+scale_max = 0.12
+scale_curve = SubResource("CurveTexture_2h7ty")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.02
+anim_speed_min = 0.47
+anim_speed_max = 0.47
+
+[sub_resource type="QuadMesh" id="QuadMesh_q8wmh"]
+
+[node name="particles upstream" type="Node3D"]
+
+[node name="upward particles" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ynxyg")
+amount = 40
+lifetime = 6.78
+speed_scale = 0.3
+explosiveness = 0.05
+randomness = 1.0
+fixed_fps = 60
+trail_lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_8pdwh")
+draw_pass_1 = SubResource("QuadMesh_q8wmh")
