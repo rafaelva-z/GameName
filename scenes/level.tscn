@@ -1,18 +1,21 @@
-[gd_scene load_steps=26 format=4 uid="uid://2ra5jc6iex42"]
+[gd_scene load_steps=34 format=4 uid="uid://2ra5jc6iex42"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_q8qw5"]
 [ext_resource type="PackedScene" uid="uid://uwjofkm4iyb2" path="res://addons/rigid_character_body_3d-cb734c0556d1d491fa6033bf931e106259b6c1f4/example/rigid_player.tscn" id="2_36h15"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_0wgi1"]
 [ext_resource type="PackedScene" uid="uid://byew263bu58d5" path="res://scenes/pause_menu.tscn" id="3_7hy1w"]
 [ext_resource type="Material" uid="uid://dyjbmfnm18vs7" path="res://assets/materials/BLACK.tres" id="4_bkoxi"]
+[ext_resource type="PackedScene" uid="uid://sddxqppikxok" path="res://assets/mountain.tscn" id="5_aagg7"]
 [ext_resource type="PackedScene" uid="uid://co2v151wjkfs1" path="res://scenes/glow.tscn" id="6_nc5my"]
 [ext_resource type="Material" uid="uid://boowup7dox5m1" path="res://assets/materials/alien_purple_rock.tres" id="6_s028g"]
+[ext_resource type="PackedScene" uid="uid://cqvp3q40j5it7" path="res://scenes/maze.tscn" id="8_ekh2g"]
+[ext_resource type="Script" path="res://scenes/maze.gd" id="9_bq1w4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vanro"]
 size = Vector3(1000, 0.1, 210)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m63uf"]
-size = Vector3(1000, 0.1, 200)
+size = Vector3(1000, 0.1, 1000)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hipgp"]
 size = Vector3(1000, 0.1, 1000)
@@ -44,6 +47,9 @@ size = Vector3(2.5, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_evx7v"]
 size = Vector3(2.5, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4gcbj"]
+size = Vector3(2, 2, 2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_p2trp"]
 top_radius = 20.0
@@ -87,6 +93,21 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_13t5j")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hth24"]
+data = PackedVector3Array(1.0085, -9.6958, -0.7329, -0.239, -8.5492, 4.5719, 5.2831, -7.7788, 2.3725, 6.6293, -1.1135, 6.9262, 8.7871, -4.0368, 0.7326, 5.2831, -7.7788, 2.3725, 1.0085, -9.6958, -0.7329, -4.037, -8.9033, -0.0002, -0.239, -8.5492, 4.5719, 1.0085, -9.6958, -0.7329, -0.6241, -7.7788, -5.758, -4.037, -8.9033, -0.0002, 1.0085, -9.6958, -0.7329, 4.9816, -7.5926, -3.6196, -0.6241, -7.7788, -5.758, 6.6293, -1.1135, 6.9262, 9.558, 0, 3.1056, 8.7871, -4.0368, 0.7326, -2.1224, -3.434, 8.9029, -0.0002, 0, 10.05, 3.05, -3.4827, 8.0119, -9.1235, -3.434, 0.7326, -9.5581, 0, 3.1056, -6.6783, -4.0368, 5.7576, -2.1224, -3.434, -8.9032, -5.9074, 0, -8.1306, -5.6696, -6.0542, -5.0252, 7.9391, -4.2271, -4.8611, 6.2495, -0.9401, -8.7808, 3.493, -4.259, -8.2843, 6.6293, -1.1135, 6.9262, 4.3724, 2.3488, 7.6279, 9.558, 0, 3.1056, -2.1224, -3.434, 8.9029, -5.9074, 0, 8.1303, -0.0002, 0, 10.05, -9.1235, -3.434, 0.7326, -9.5581, 0, -3.1059, -9.5581, 0, 3.1056, -2.1224, -3.434, -8.9032, -0.0002, 0, -10.05, -5.9074, 0, -8.1306, 7.9391, -4.2271, -4.8611, 10.0991, -3.3603, -3.4935, 6.2495, -0.9401, -8.7808, 1.2782, 6.4164, 6.3192, -0.8887, 9.1938, 3.0976, 7.3347, 0.8076, 5.5227, -7.2725, 4.4944, 5.2835, -5.0838, 6.7722, 4.6391, -2.6419, 5.2834, 8.1303, 1.6324, 8.5489, -5.0252, -2.794, 8.0432, -0.942, -2.6968, 8.3169, -2.9338, 1.6324, 8.5489, -5.0252, -0.1142, 8.8331, 0.09, -2.794, 8.0432, -0.942, 2.7776, 4.4944, -8.5493, 1.6324, 8.5489, -5.0252, -2.6419, 5.2834, -8.1306, 2.6114, 9.3081, -0.0002, 1.6324, 8.5489, -5.0252, 3.6508, 8.5489, -2.2474, 2.6114, 9.3081, -0.0002, -0.1142, 8.8331, 0.09, 1.6324, 8.5489, -5.0252, 3.6508, 8.5489, -2.2474, 7.063, 2.8171, -5.1123, 5.9106, 6.5295, -1.8014, 3.6508, 8.5489, -2.2474, 1.6324, 8.5489, -5.0252, 7.063, 2.8171, -5.1123, -0.8887, 9.1938, 3.0976, 5.8692, 6.3384, 1.5769, 7.3347, 0.8076, 5.5227, -0.8887, 9.1938, 3.0976, 2.8115, 8.8073, 1.2405, 5.8692, 6.3384, 1.5769, 7.063, 2.8171, -5.1123, 1.6324, 8.5489, -5.0252, 2.7776, 4.4944, -8.5493, 1.6324, 8.5489, -5.0252, -4.0364, 6.0232, -4.2063, -2.6419, 5.2834, -8.1306, 1.6324, 8.5489, -5.0252, -2.6968, 8.3169, -2.9338, -4.0364, 6.0232, -4.2063, -2.794, 8.0432, -0.942, -5.0838, 6.7722, 4.6391, -5.6705, 8.3726, 1.0724, -2.794, 8.0432, -0.942, -0.1142, 8.8331, 0.09, -5.0838, 6.7722, 4.6391, -5.6705, 8.3726, 1.0724, -8.5491, 5.2834, -0.0002, -7.3172, 5.6993, -0.5685, -5.6705, 8.3726, 1.0724, -5.0838, 6.7722, 4.6391, -8.5491, 5.2834, -0.0002, -7.2725, 4.4944, -5.2838, -7.3172, 5.6993, -0.5685, -8.5491, 5.2834, -0.0002, -7.2725, 4.4944, -5.2838, -6.5796, 5.0906, -4.2091, -7.3172, 5.6993, -0.5685, -8.5491, 5.2834, -0.0002, -5.0838, 6.7722, 4.6391, -7.2725, 4.4944, 5.2835, -5.0838, 6.7722, 4.6391, -0.1142, 8.8331, 0.09, -0.8887, 9.1938, 3.0976, -5.0838, 6.7722, 4.6391, -0.8887, 9.1938, 3.0976, -2.6419, 5.2834, 8.1303, -2.6419, 5.2834, 8.1303, -0.8887, 9.1938, 3.0976, 1.2782, 6.4164, 6.3192, 8.989, 4.4944, -0.0002, 5.9106, 6.5295, -1.8014, 7.063, 2.8171, -5.1123, 8.989, 4.4944, -0.0002, 7.1575, 6.4985, -0.0002, 5.9106, 6.5295, -1.8014, 7.3347, 0.8076, 5.5227, 7.1575, 6.4985, -0.0002, 8.989, 4.4944, -0.0002, 7.3347, 0.8076, 5.5227, 5.8692, 6.3384, 1.5769, 7.1575, 6.4985, -0.0002, 10.0991, -3.3603, -3.4935, 8.989, 4.4944, -0.0002, 7.063, 2.8171, -5.1123, 10.0991, -3.3603, -3.4935, 7.063, 2.8171, -5.1123, 6.2495, -0.9401, -8.7808, 6.2495, -0.9401, -8.7808, 7.063, 2.8171, -5.1123, 2.7776, 4.4944, -8.5493, -0.0002, 0, -10.05, 2.7776, 4.4944, -8.5493, -2.6419, 5.2834, -8.1306, -0.0002, 0, -10.05, -2.6419, 5.2834, -8.1306, -5.9074, 0, -8.1306, -5.9074, 0, -8.1306, -2.6419, 5.2834, -8.1306, -7.2725, 4.4944, -5.2838, -9.5581, 0, -3.1059, -7.2725, 4.4944, -5.2838, -8.5491, 5.2834, -0.0002, -9.5581, 0, -3.1059, -8.5491, 5.2834, -0.0002, -9.5581, 0, 3.1056, -9.5581, 0, 3.1056, -8.5491, 5.2834, -0.0002, -7.2725, 4.4944, 5.2835, -5.9074, 0, 8.1303, -7.2725, 4.4944, 5.2835, -2.6419, 5.2834, 8.1303, -5.9074, 0, 8.1303, -2.6419, 5.2834, 8.1303, -0.0002, 0, 10.05, -0.0002, 0, 10.05, -2.6419, 5.2834, 8.1303, 1.2782, 6.4164, 6.3192, 4.3724, 2.3488, 7.6279, 1.2782, 6.4164, 6.3192, 7.3347, 0.8076, 5.5227, 4.3724, 2.3488, 7.6279, 7.3347, 0.8076, 5.5227, 9.558, 0, 3.1056, 9.558, 0, 3.1056, 7.3347, 0.8076, 5.5227, 8.989, 4.4944, -0.0002, 6.2495, -0.9401, -8.7808, 2.7776, 4.4944, -8.5493, -0.0002, 0, -10.05, 6.2495, -0.9401, -8.7808, -0.0002, 0, -10.05, 3.493, -4.259, -8.2843, 3.493, -4.259, -8.2843, -0.0002, 0, -10.05, -2.1224, -3.434, -8.9032, -5.9074, 0, -8.1306, -7.2725, 4.4944, -5.2838, -9.5581, 0, -3.1059, -5.9074, 0, -8.1306, -9.5581, 0, -3.1059, -5.6696, -6.0542, -5.0252, -5.6696, -6.0542, -5.0252, -9.5581, 0, -3.1059, -9.1235, -3.434, 0.7326, -9.5581, 0, 3.1056, -7.2725, 4.4944, 5.2835, -5.9074, 0, 8.1303, -9.5581, 0, 3.1056, -5.9074, 0, 8.1303, -6.6783, -4.0368, 5.7576, -6.6783, -4.0368, 5.7576, -5.9074, 0, 8.1303, -2.1224, -3.434, 8.9029, -0.0002, 0, 10.05, 1.2782, 6.4164, 6.3192, 4.3724, 2.3488, 7.6279, -0.0002, 0, 10.05, 4.3724, 2.3488, 7.6279, 3.05, -3.4827, 8.0119, 3.05, -3.4827, 8.0119, 4.3724, 2.3488, 7.6279, 6.6293, -1.1135, 6.9262, 9.558, 0, 3.1056, 8.989, 4.4944, -0.0002, 10.0991, -3.3603, -3.4935, 9.558, 0, 3.1056, 10.0991, -3.3603, -3.4935, 8.7871, -4.0368, 0.7326, 8.7871, -4.0368, 0.7326, 10.0991, -3.3603, -3.4935, 7.9391, -4.2271, -4.8611, 4.9816, -7.5926, -3.6196, 7.9391, -4.2271, -4.8611, 3.493, -4.259, -8.2843, 4.9816, -7.5926, -3.6196, 3.493, -4.259, -8.2843, -0.6241, -7.7788, -5.758, -0.6241, -7.7788, -5.758, 3.493, -4.259, -8.2843, -2.1224, -3.434, -8.9032, -0.6241, -7.7788, -5.758, -2.1224, -3.434, -8.9032, -5.6696, -6.0542, -5.0252, -0.6241, -7.7788, -5.758, -5.6696, -6.0542, -5.0252, -4.037, -8.9033, -0.0002, -4.037, -8.9033, -0.0002, -5.6696, -6.0542, -5.0252, -9.1235, -3.434, 0.7326, -4.037, -8.9033, -0.0002, -9.1235, -3.434, 0.7326, -6.6783, -4.0368, 5.7576, -4.037, -8.9033, -0.0002, -6.6783, -4.0368, 5.7576, -0.239, -8.5492, 4.5719, -0.239, -8.5492, 4.5719, -6.6783, -4.0368, 5.7576, -2.1224, -3.434, 8.9029, 8.7871, -4.0368, 0.7326, 7.9391, -4.2271, -4.8611, 4.9816, -7.5926, -3.6196, 8.7871, -4.0368, 0.7326, 4.9816, -7.5926, -3.6196, 5.2831, -7.7788, 2.3725, 5.2831, -7.7788, 2.3725, 4.9816, -7.5926, -3.6196, 1.0085, -9.6958, -0.7329, -0.239, -8.5492, 4.5719, -2.1224, -3.434, 8.9029, 3.05, -3.4827, 8.0119, -0.239, -8.5492, 4.5719, 3.05, -3.4827, 8.0119, 5.2831, -7.7788, 2.3725, 5.2831, -7.7788, 2.3725, 3.05, -3.4827, 8.0119, 6.6293, -1.1135, 6.9262, 2.6114, 9.3081, -0.0002, 5.8692, 6.3384, 1.5769, 2.8115, 8.8073, 1.2405, 5.8692, 6.3384, 1.5769, 5.9106, 6.5295, -1.8014, 7.1575, 6.4985, -0.0002, 5.9106, 6.5295, -1.8014, 2.6114, 9.3081, -0.0002, 3.6508, 8.5489, -2.2474, 5.8692, 6.3384, 1.5769, 2.6114, 9.3081, -0.0002, 5.9106, 6.5295, -1.8014, -0.8887, 9.1938, 3.0976, 2.6114, 9.3081, -0.0002, 2.8115, 8.8073, 1.2405, -0.8887, 9.1938, 3.0976, -0.1142, 8.8331, 0.09, 2.6114, 9.3081, -0.0002, -6.5796, 5.0906, -4.2091, -5.6705, 8.3726, 1.0724, -7.3172, 5.6993, -0.5685, -5.6705, 8.3726, 1.0724, -2.6968, 8.3169, -2.9338, -2.794, 8.0432, -0.942, -2.6968, 8.3169, -2.9338, -6.5796, 5.0906, -4.2091, -4.0364, 6.0232, -4.2063, -5.6705, 8.3726, 1.0724, -6.5796, 5.0906, -4.2091, -2.6968, 8.3169, -2.9338, -2.6419, 5.2834, -8.1306, -6.5796, 5.0906, -4.2091, -7.2725, 4.4944, -5.2838, -2.6419, 5.2834, -8.1306, -4.0364, 6.0232, -4.2063, -6.5796, 5.0906, -4.2091)
+
+[sub_resource type="TorusMesh" id="TorusMesh_goowc"]
+inner_radius = 20.0
+outer_radius = 21.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_pfhtu"]
+inner_radius = 27.0
+outer_radius = 26.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_ktq5s"]
+inner_radius = 35.0
+outer_radius = 34.0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hwh7e"]
 points = PackedVector3Array(5.05, 0, 7.985, -1.5, 1.7, 4.73, 8.595, -0.28, 4.515, 4.27, 1.375, 2.93, -1, -0.185, 11.53, 0.275, 1.16, 7.855, -3.585, 0.865, 9.605, -6.88, -0.305, 9.59, -10.51, -0.285, 4.505, -8.235, 0.69, 6.74, -9.525, 0.88, 1.435, -6.12, 1.205, 6.055, -0.14, 1.795, 0, 5.715, 1.245, -0.165, 0.86, 1.55, -4.195, -4.575, 1.59, -0.385, -2.975, 1.065, -4.845, -8.28, 0.68, -3.84, -10.505, -0.28, -1.655, -6.855, -0.29, -6.7, -3.605, 0.87, -6.66, -1.05, -0.33, -8.635, 1.81, 0.685, -7.115, 5.33, -0.515, -7.32, 6.125, 0.32, -3.67, 9.14, -1.03, -2, 8.035, 0.69, 1.44)
@@ -170,6 +191,7 @@ shape = SubResource("BoxShape3D_m63uf")
 
 [node name="Ceiling" type="StaticBody3D" parent="Level/Level Box"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+visible = false
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Level Box/Ceiling"]
@@ -227,7 +249,7 @@ skeleton = NodePath("../Bed")
 shape = SubResource("BoxShape3D_kd25v")
 
 [node name="AlchemyStation" type="StaticBody3D" parent="Level/Start space"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.38442)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583785, -5.46959)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Start space/AlchemyStation"]
@@ -237,7 +259,7 @@ mesh = SubResource("CylinderMesh_2juyp")
 shape = SubResource("CylinderShape3D_logam")
 
 [node name="Delivery" type="StaticBody3D" parent="Level/Start space"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333785, 2.77176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333785, 3.87906)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Start space/Delivery"]
@@ -246,10 +268,24 @@ mesh = SubResource("BoxMesh_0a54g")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Start space/Delivery"]
 shape = SubResource("BoxShape3D_evx7v")
 
+[node name="mountain" parent="Level/Start space" instance=ExtResource("5_aagg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.8748, -0.166212, -92.7231)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Level/Start space/mountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67832, 41, 6.35175)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Start space/mountain/StaticBody3D2"]
+mesh = SubResource("BoxMesh_4gcbj")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Level/Start space/mountain/StaticBody3D2"]
+transform = Transform3D(-0.798509, 0.0739495, 0.597424, 0.372525, 0.840277, 0.393902, -0.472873, 0.53709, -0.698517, 0, 0, 0)
+spot_range = 134.138
+spot_angle = 13.0205
+
 [node name="Sky space" type="Node3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.1664, 60, -11.9174)
 
 [node name="Floor" type="StaticBody3D" parent="Level/Sky space"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.48, 57.9658, 0)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Sky space/Floor"]
@@ -267,35 +303,85 @@ light_specular = 16.0
 omni_range = 37.557
 
 [node name="Maze space" type="Node3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.09, 0, -157.634)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.087, 0, -112.075)
 
-[node name="Last space" type="Node3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -169.521, 0, 190.705)
-
-[node name="glow" parent="Level" instance=ExtResource("6_nc5my")]
-transform = Transform3D(-0.433226, -0.000218476, -0.901285, 0.000487973, 1, -0.000476959, 0.901285, -0.000646433, -0.433226, -50.2255, 3.14217, 2.40927)
+[node name="glow" parent="Level/Maze space" instance=ExtResource("6_nc5my")]
+transform = Transform3D(-0.433226, -0.000218476, -0.901285, 0.000487973, 1, -0.000476959, 0.901285, -0.000646433, -0.433226, 0, 2.23608, 0)
 metadata/_edit_group_ = true
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Level/glow"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Level/Maze space/glow"]
 transform = Transform3D(-0.433226, 0.000487971, 0.901285, -0.000218474, 1, -0.000646433, -0.901285, -0.00047696, -0.433226, 0, 0, 0)
 light_energy = 0.8
 omni_range = 8.64187
 
-[node name="rock_floor" type="StaticBody3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.2255, -0.84054, 2.46095)
+[node name="rock_floor" type="StaticBody3D" parent="Level/Maze space"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.841, 0)
 metadata/_edit_group_ = true
 
-[node name="Icosphere" type="MeshInstance3D" parent="Level/rock_floor"]
+[node name="Icosphere" type="MeshInstance3D" parent="Level/Maze space/rock_floor"]
 transform = Transform3D(1, 0, 0, 0, 0.22, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("6_s028g")
 mesh = SubResource("ArrayMesh_jkjhn")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/rock_floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.895817, 0.278888, -1.47288)
-shape = SubResource("ConvexPolygonShape3D_hwh7e")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Level/Maze space/rock_floor"]
+transform = Transform3D(1, 0, 0, 0, 0.22, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_hth24")
+
+[node name="Reference" type="StaticBody3D" parent="Level/Maze space"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86939, 0)
+visible = false
+
+[node name="Walls" type="Node3D" parent="Level/Maze space/Reference"]
+transform = Transform3D(0.584731, 0, 0.811227, 0, 1, 0, -0.811227, 0, 0.584731, -26.0316, -0.259609, -18.8538)
+
+[node name="Donuts" type="Node3D" parent="Level/Maze space/Reference"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 178.09, -1.86939, 157.634)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Maze space/Reference/Donuts"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -178.09, -0.610825, -157.634)
+mesh = SubResource("TorusMesh_goowc")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Level/Maze space/Reference/Donuts"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -178.09, -0.605824, -157.634)
+mesh = SubResource("TorusMesh_pfhtu")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Level/Maze space/Reference/Donuts"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -178.09, -0.600824, -157.634)
+visible = false
+mesh = SubResource("TorusMesh_ktq5s")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Level/Maze space"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5605, 14.6702, 37.177)
+light_energy = 9.1
+omni_range = 97.3109
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Level/Maze space"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -3.508, 6.40894, -0.361)
+aabb = AABB(-29.3237, -7.6954, -28.246, 60.6465, 49.7288, 58.491)
+
+[node name="maze" parent="Level/Maze space" instance=ExtResource("8_ekh2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.508, 0, -0.361)
+script = ExtResource("9_bq1w4")
+
+[node name="Last space" type="Node3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -169.521, 0, 190.705)
 
 [node name="Player" parent="Level" instance=ExtResource("2_36h15")]
-transform = Transform3D(0.155952, 0, 0.987765, 0, 1, 0, -0.987765, 0, 0.155952, 5.2208, 0.423638, 0.0810955)
+transform = Transform3D(-0.155952, 0, -0.987765, 0, 1, 0, 0.987765, 0, -0.155952, -4.12081, 0.423638, 2.51209)
 mass = 0.5
 fluid_density = 1.0
+
+[node name="Trash" type="Node3D" parent="."]
+visible = false
+
+[node name="Handmade rock collision" type="CollisionShape3D" parent="Trash"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -177.194, 8.02017, -159.107)
+shape = SubResource("ConvexPolygonShape3D_hwh7e")
+disabled = true
+
+[node name="fake_maze" parent="." instance=ExtResource("8_ekh2g")]
+transform = Transform3D(0.22034, 0, -0.975423, 0, 1, 0, 0.975423, 0, 0.22034, 114.747, 1.87933, 87.8481)
