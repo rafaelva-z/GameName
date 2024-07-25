@@ -20,6 +20,16 @@
 
 extends RigidCharacterBody3D
 
+@onready var raycast: RayCast3D = $Camera3D/RayCast3D
+# Placeholder node to hold objects
+@onready var hold_position: Node3D = $Camera3D/hold_stuff
+
+
+# Held object
+var held_object: Node3D = null
+var holding_distance = 0.1
+
+
 func _ready():
 	super._ready()
 	#region Input Actions
@@ -29,6 +39,7 @@ func _ready():
 	InputMap.add_action("move_backward")
 	InputMap.add_action("jump")
 	InputMap.add_action("run")
+	InputMap.add_action("pickup")
 	var e = InputEventKey.new()
 	e.key_label = KEY_A
 	InputMap.action_add_event("move_left", e)
@@ -47,6 +58,9 @@ func _ready():
 	e = InputEventKey.new()
 	e.key_label = KEY_SHIFT
 	InputMap.action_add_event("run", e)
+	e = InputEventKey.new()
+	e.key_label = KEY_F
+	InputMap.action_add_event("pickup", e)
 	#endregion
 	
 	# Capture mouse
@@ -57,3 +71,37 @@ func process_character_input():
 	input_direction = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
 	jump_input = Input.is_action_just_pressed("jump")
 	run_input = Input.is_action_just_pressed("run")
+
+
+func _process(delta):
+	_handle_input(delta)
+	_handle_pickup(delta)
+
+
+func _handle_input(delta):
+	process_character_input()
+
+
+func _handle_pickup(delta):
+	if Input.is_action_just_pressed("pickup"):
+		if held_object == null:
+			raycast.force_raycast_update()
+			if raycast.is_colliding():
+				print("colliding")
+				var collider = raycast.get_collider()
+				if collider is Node3D:
+					held_object = collider
+					held_object.get_parent().remove_child(held_object)
+					hold_position.add_child(held_object)
+					held_object.transform.origin = Vector3(0, 0, holding_distance)
+					var collision_shape = held_object.get_node("CollisionShape3D")
+					if collision_shape:
+						collision_shape.disabled = true
+		else:
+			hold_position.remove_child(held_object)
+			get_tree().root.add_child(held_object)
+			# Re-enable collision shape for the held object
+			var collision_shape = held_object.get_node("CollisionShape3D")
+			if collision_shape:
+				collision_shape.disabled = false
+			held_object = null

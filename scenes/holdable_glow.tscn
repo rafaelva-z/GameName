@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd0goloykxvve"]
+
+[ext_resource type="Texture2D" uid="uid://dmtjfv4jch6qp" path="res://assets/Flare00.PNG" id="1_s7trc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnp6t"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.766)
+albedo_texture = ExtResource("1_s7trc")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_fcmc1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.268542, 0.827833), 0.0, 0.0, 0, 0, Vector2(0.498721, 0.92944), 0.0, 0.0, 0, 0, Vector2(0.751918, 0.85888), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_4xqbr"]
+curve = SubResource("Curve_fcmc1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a8pyy"]
+spread = 0.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_4xqbr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_eeyl0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_04gpk"]
+
+[node name="holdable_stuff" type="StaticBody3D"]
+collision_layer = 4
+collision_priority = 2.08165e-12
+
+[node name="smoke3" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000312328, 1.49012e-08, -0.000614524)
+rotation_order = 5
+material_override = SubResource("StandardMaterial3D_tnp6t")
+amount = 1
+lifetime = 0.01
+preprocess = 0.02
+speed_scale = 0.01
+fixed_fps = 60
+interpolate = false
+fract_delta = false
+collision_base_size = 0.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_a8pyy")
+draw_pass_1 = SubResource("QuadMesh_eeyl0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_04gpk")

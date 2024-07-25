@@ -31,6 +31,7 @@ func _process(_delta):
 "
 
 [node name="RigidPlayer" type="RigidBody3D" node_paths=PackedStringArray("orientation_node")]
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_3ggag")
 gravity_scale = 0.0
 script = ExtResource("1_ab1qo")
@@ -45,5 +46,14 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 shape = SubResource("SeparationRayShape3D_xe7iv")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4.37114e-08)
 script = SubResource("GDScript_p6pkv")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(-0.0599476, -0.00359846, 25.9991, -10.3845, 0.0303355, -0.141825, -0.525355, -0.599222, -0.16331, -0.0134869, 0.0136598, -1.00863)
+target_position = Vector3(2.08165e-12, -1, 2.08165e-12)
+collision_mask = 4
+
+[node name="hold_stuff" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130053, -0.205251, -0.414327)
